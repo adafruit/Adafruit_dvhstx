@@ -84,6 +84,8 @@ void DVHSTXText3::clear() {
 
 // Character framebuffer is actually a small GFXcanvas16, so...
 size_t DVHSTXText3::write(uint8_t c) {
+  if (!*this) return 0;
+
   if (c == '\r') { // Carriage return
     cursor_x = 0;
   } else if ((c == '\n') ||
