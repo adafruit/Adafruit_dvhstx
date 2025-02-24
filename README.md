@@ -13,6 +13,9 @@ Proceed at your own discretion.
 
 DV HSTX will enable you to create big, bold audio visual projects using Arduino and an HDMI display of your choice.
 
+![Text mode display](hstx-textmode.png)
+![Graphics](hstx-graphicsmode.png)
+
 ## Documentation
 
 See the examples in the `examples` folder. These examples should all work without changes on the Adafruit Feather RP2350, Adafruit Metro RP2350, and Adafruit Fruit Jam, as well as any other boards that define the HSTX pinout with preprocessor macros `PIN_CKP`, PIN_D0P`, PIN_D1P`, and `PIN_D2P`. If these are defined, then you can simply use `DVHSTX_PINOUT_DEFAULT`. 
