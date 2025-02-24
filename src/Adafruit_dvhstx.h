@@ -180,6 +180,8 @@ public:
         pinout(pinout), res{res}, attr{TextColor::TEXT_WHITE} {}
   ~DVHSTXText3() { end(); }
 
+  operator bool() const { return hstx.get_back_buffer<uint16_t>(); }
+
   bool begin() {
     bool result =
         hstx.init(91, 30, pimoroni::DVHSTX::MODE_TEXT_RGB111, false, pinout);
@@ -192,19 +194,20 @@ public:
 
   void clear();
 
-  void set_color(TextColor a) { attr = a; }
+  void setColor(uint8_t a) { attr = a; }
+  void setColor(TextColor fg, TextColor bg, TextColor inten = TextColor::ATTR_NORMAL_INTEN) { attr = fg | bg | inten; }
 
-  void hide_cursor() {
+  void hideCursor() {
     cursor_visible = false;
     hstx.cursor_off();
   }
 
-  void show_cursor() {
+  void showCursor() {
     cursor_visible = true;
     sync_cursor_with_hstx();
   }
 
-  void set_cursor(int x, int y) {
+  void setCursor(int x, int y) {
     if (x < 0)
       x = 0;
     if (x > _width)
@@ -220,13 +223,15 @@ public:
 
   size_t write(uint8_t c);
 
+  int getCursorX() const { return cursor_x; }
+  int getCursorY() const { return cursor_y; }
 private:
   DVHSTXPinout pinout;
   DVHSTXResolution res;
   mutable pimoroni::DVHSTX hstx;
   bool double_buffered;
   bool cursor_visible = false;
-  TextColor attr;
+  uint8_t attr;
   uint8_t cursor_x = 0, cursor_y = 0;
 
   void sync_cursor_with_hstx() {
