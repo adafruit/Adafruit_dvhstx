@@ -1,28 +1,23 @@
-# Adafruit DVI HSTX Library [![Build Status](https://github.com/adafruit/Adafruit-DVI-HSTX/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/Adafruit-DVI-HSTX/actions)[![Documentation](https://github.com/adafruit/ci-arduino/blob/master/assets/doxygen_badge.svg)](http://adafruit.github.io/Adafruit-DVI-HSTX/html/index.html)
+# DVI for HSTX (Adafruit Arduino library) <!-- omit in toc -->
 
-This library is based on the [dvhstx library by MichaelBell](https://github.com/MichaelBell/dvhstx)
+This repository is home to the Adafruit GFX compatible DVI driver for RP2 chips with HSTX (e.g. Adafruit Metro RP2350, Adafruit Fruit Jam).
 
-It is an Arduino library for DVI over HSTX with Adafruit GFX.
+**Important note on overclocking:** This library overclocks your RP2 chip to 264MHz. Simply including the `<Adafruit_dvhstx.h>` header enables this overclocking, separate from the option in the Arduino Tools menu.
+Just like PC overclocking, there’s some risk of reduced component lifespan, though the extent (if any) can’t be precisely quantified and could vary from one chip to another.
+Proceed at your own discretion.
 
-## Dependencies
-* [Adafruit_GFX](https://github.com/adafruit/Adafruit-GFX-Library)
+- [Introduction](#introduction)
+- [Documentation](#documentation)
 
-# Contributing
+## Introduction
 
-Contributions are welcome! Please read our [Code of Conduct](https://github.com/adafruit/Adafruit-DVI-HSTX/blob/main/CODE_OF_CONDUCT.md>)
-before contributing to help this project stay welcoming.
+DV HSTX will enable you to create big, bold audio visual projects using Arduino and an HDMI display of your choice.
 
-## Documentation and doxygen
-Documentation is produced by doxygen. Contributions should include documentation for any new code added.
+![Text mode display](hstx-textmode.png)
+![Graphics](hstx-graphicsmode.png)
 
-Some examples of how to use doxygen can be found in these guide pages:
+## Documentation
 
-https://learn.adafruit.com/the-well-automated-arduino-library/doxygen
+See the examples in the `examples` folder. These examples should all work without changes on the Adafruit Feather RP2350, Adafruit Metro RP2350, and Adafruit Fruit Jam, as well as any other boards that define the HSTX pinout with preprocessor macros `PIN_CKP`, PIN_D0P`, PIN_D1P`, and `PIN_D2P`. If these are defined, then you can simply use `DVHSTX_PINOUT_DEFAULT`. 
 
-https://learn.adafruit.com/the-well-automated-arduino-library/doxygen-tips
-
-Written by Jeff Epler for Adafruit Industries.
-MIT license, check license.txt for more information
-All text above must be included in any redistribution
-
-To install, use the Arduino Library Manager and search for "Adafruit DVI HSTX" and install the library.
+If your board does not define the HSTX pin mapping, it can be written as 4 numbers inside curly braces: `{ckp, d0p, d1p, d2p}` where e.g., `ckp` is the GPIO# of the positive pin in the clock pair, d0p is the positive pin in the D0 or red pin pair, and so on.
