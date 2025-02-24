@@ -36,9 +36,9 @@ void setup() {
     for (;;)
       digitalWrite(LED_BUILTIN, (millis() / 500) & 1);
   }
-  display.set_color(TextColor::TEXT_BLACK, TextColor::BG_WHITE);
+  display.setColor(TextColor::TEXT_BLACK, TextColor::BG_WHITE);
   display.clear();
-  display.show_cursor();
+  display.showCursor();
   display.print("display initialized (black on white background)\n\n\n\n\n");
   display.println("line wrap test. one line should be full of 'w's and the next line should start 'xy'.");
   for (int i = 0; i < display.width(); i++)
@@ -53,19 +53,19 @@ void setup() {
   for (TextColor c : colors) {
    display.printf(" %d ", (int)c);
     for (TextColor d : background_colors) {
-      display.set_color(c, d);
+      display.setColor(c, d);
       display.write('*');
       display.write('*');
       display.write('*');
-      display.set_color(c, d, TextColor::ATTR_LOW_INTEN);
+      display.setColor(c, d, TextColor::ATTR_LOW_INTEN);
       display.write('*');
       display.write('*');
       display.write('*');
-      display.set_color(c, d, TextColor::ATTR_V_LOW_INTEN);
+      display.setColor(c, d, TextColor::ATTR_V_LOW_INTEN);
       display.write('*');
       display.write('*');
       display.write('*');
-      display.set_color(TextColor::TEXT_BLACK, TextColor::BG_WHITE);
+      display.setColor(TextColor::TEXT_BLACK, TextColor::BG_WHITE);
       display.write(' ');
     }
     display.write('\n');
@@ -86,7 +86,7 @@ void loop() {
     if(bg_idx == fg_idx) bg_idx ++; // never bg == fg
     for (int j = random(6); j; j--)
       display.write(' ');
-    display.set_color(colors[fg_idx], background_colors[bg_idx], intensity[inten_idx]);
+    display.setColor(colors[fg_idx], background_colors[bg_idx], intensity[inten_idx]);
     for (int j = random(6); j; j--)
       display.write(' ');
   }
