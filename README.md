@@ -1,49 +1,28 @@
-# DVI for HSTX <!-- omit in toc -->
+# Adafruit DVI HSTX Library [![Build Status](https://github.com/adafruit/Adafruit-DVI-HSTX/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/Adafruit-DVI-HSTX/actions)[![Documentation](https://github.com/adafruit/ci-arduino/blob/master/assets/doxygen_badge.svg)](http://adafruit.github.io/Adafruit-DVI-HSTX/html/index.html)
 
-This repository is home to the Pimoroni PicoGraphics compatible DVI driver for RP2 chips with HSTX (e.g. RP2350).
+This library is based on the [dvhstx library by MichaelBell](https://github.com/MichaelBell/dvhstx)
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/MichaelBell/dvhstx/micropython.yml?branch=main&label=MicroPython)](https://github.com/MichaelBell/dvhstx/actions/workflows/micropython.yml)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/MichaelBell/dvhstx)](https://github.com/MichaelBell/dvhstx/releases/latest/)
+It is an Arduino library for DVI over HSTX with Adafruit GFX.
 
-- [Introduction](#introduction)
-- [Download MicroPython](#download-micropython)
-- [Documentation](#documentation)
-- [C/C++ Resources](#cc-resources)
-- [C/C++ Community Projects](#cc-community-projects)
+## Dependencies
+* [Adafruit_GFX](https://github.com/adafruit/Adafruit-GFX-Library)
 
-## Introduction
+# Contributing
 
-DV HSTX will enable you to create big, bold audio visual projects using MicroPython and an HDMI display of your choice.
+Contributions are welcome! Please read our [Code of Conduct](https://github.com/adafruit/Adafruit-DVI-HSTX/blob/main/CODE_OF_CONDUCT.md>)
+before contributing to help this project stay welcoming.
 
-![Mandelbrot fractal displayed on a monitor](Mandelbrot.jpg)
+## Documentation and doxygen
+Documentation is produced by doxygen. Contributions should include documentation for any new code added.
 
-## Download MicroPython
+Some examples of how to use doxygen can be found in these guide pages:
 
-TODO
+https://learn.adafruit.com/the-well-automated-arduino-library/doxygen
 
-* [DV HSTX MicroPython Releases](https://github.com/MichaelBell/dvhstx/releases)
+https://learn.adafruit.com/the-well-automated-arduino-library/doxygen-tips
 
-## Documentation
+Written by Jeff Epler for Adafruit Industries.
+MIT license, check license.txt for more information
+All text above must be included in any redistribution
 
-Wire up your DVI breakout as follows:
-
-    GPIO 12 - CK-
-    GPIO 13 - CK+
-    GPIO 14 - D0-
-    GPIO 15 - D0+
-    GPIO 16 - D1-
-    GPIO 17 - D1+
-    GPIO 18 - D2-
-    GPIO 19 - D2+
-
-If using jumper jerky, twist the - and + wires for each signal together to help with signal integrity.
-
-TODO
-
-## C/C++ Resources
-
-* :link: [C++ Boilerplate](https://github.com/MichaelBell/dvhstx-boilerplate/)
-
-## C/C++ Community Projects
-
-TODO
+To install, use the Arduino Library Manager and search for "Adafruit DVI HSTX" and install the library.
