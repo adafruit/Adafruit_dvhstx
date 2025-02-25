@@ -11,7 +11,8 @@
 #ifdef PIN_CKP
 DVHSTX16 display(DVHSTX_PINOUT_DEFAULT, DVHSTX_RESOLUTION_320x240);
 #else
-  DVHSTX16 display({14, 18, 16, 12}, DVHSTX_RESOLUTION_320x240);
+DVHSTX16 display({14, 18, 16, 12}, DVHSTX_RESOLUTION_320x240);
+#endif
 
 void setup() {
   Serial.begin(115200);
