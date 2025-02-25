@@ -195,10 +195,7 @@ public:
   void clear();
 
   void setColor(uint8_t a) { attr = a; }
-  void setColor(TextColor fg, TextColor bg,
-                TextColor inten = TextColor::ATTR_NORMAL_INTEN) {
-    attr = fg | bg | inten;
-  }
+  void setColor(TextColor fg, TextColor bg, TextColor inten = TextColor::ATTR_NORMAL_INTEN) { attr = fg | bg | inten; }
 
   void hideCursor() {
     cursor_visible = false;
@@ -228,7 +225,6 @@ public:
 
   int getCursorX() const { return cursor_x; }
   int getCursorY() const { return cursor_y; }
-
 private:
   DVHSTXPinout pinout;
   DVHSTXResolution res;

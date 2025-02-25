@@ -12,20 +12,22 @@ DVHSTXText3 display(DVHSTX_PINOUT_DEFAULT);
 // DVHSTXText3 display({12, 14, 16, 18});
 
 const static TextColor colors[] = {
-    TextColor::TEXT_BLACK, TextColor::TEXT_RED,    TextColor::TEXT_GREEN,
-    TextColor::TEXT_BLUE,  TextColor::TEXT_YELLOW, TextColor::TEXT_MAGENTA,
-    TextColor::TEXT_CYAN,  TextColor::TEXT_WHITE,
+    TextColor::TEXT_BLACK,
+    TextColor::TEXT_RED,    TextColor::TEXT_GREEN,   TextColor::TEXT_BLUE,
+    TextColor::TEXT_YELLOW, TextColor::TEXT_MAGENTA, TextColor::TEXT_CYAN,
+    TextColor::TEXT_WHITE,
 };
 
 const static TextColor background_colors[] = {
-    TextColor::BG_BLACK, TextColor::BG_RED,    TextColor::BG_GREEN,
-    TextColor::BG_BLUE,  TextColor::BG_YELLOW, TextColor::BG_MAGENTA,
-    TextColor::BG_CYAN,  TextColor::BG_WHITE,
+    TextColor::BG_BLACK,
+    TextColor::BG_RED,    TextColor::BG_GREEN,   TextColor::BG_BLUE,
+    TextColor::BG_YELLOW, TextColor::BG_MAGENTA, TextColor::BG_CYAN,
+    TextColor::BG_WHITE,
 };
 
-const static TextColor intensity[] = {TextColor::ATTR_NORMAL_INTEN,
-                                      TextColor::ATTR_LOW_INTEN,
-                                      TextColor::ATTR_V_LOW_INTEN};
+const static TextColor intensity[] = {
+    TextColor::ATTR_NORMAL_INTEN, TextColor::ATTR_LOW_INTEN, TextColor::ATTR_V_LOW_INTEN
+};
 
 void setup() {
   Serial.begin(115200);
@@ -38,19 +40,18 @@ void setup() {
   display.clear();
   display.showCursor();
   display.print("display initialized (black on white background)\n\n\n\n\n");
-  display.println("line wrap test. one line should be full of 'w's and the "
-                  "next line should start 'xy'.");
+  display.println("line wrap test. one line should be full of 'w's and the next line should start 'xy'.");
   for (int i = 0; i < display.width(); i++)
     display.write('w');
   display.println("xy");
   display.println("\n\nAttribute test\n");
   display.print("   ");
   for (int d : background_colors) {
-    display.printf(" %d ri vli ", (int)d >> 3);
-  }
+   display.printf(" %d ri vli ", (int)d >> 3 );
+    }
   display.write('\n');
   for (TextColor c : colors) {
-    display.printf(" %d ", (int)c);
+   display.printf(" %d ", (int)c);
     for (TextColor d : background_colors) {
       display.setColor(c, d);
       display.write('*');
@@ -82,12 +83,10 @@ void loop() {
     auto fg_idx = random(std::size(colors));
     auto bg_idx = random(std::size(colors)) - 1;
     auto inten_idx = random(std::size(intensity));
-    if (bg_idx == fg_idx)
-      bg_idx++; // never bg == fg
+    if(bg_idx == fg_idx) bg_idx ++; // never bg == fg
     for (int j = random(6); j; j--)
       display.write(' ');
-    display.setColor(colors[fg_idx], background_colors[bg_idx],
-                     intensity[inten_idx]);
+    display.setColor(colors[fg_idx], background_colors[bg_idx], intensity[inten_idx]);
     for (int j = random(6); j; j--)
       display.write(' ');
   }
