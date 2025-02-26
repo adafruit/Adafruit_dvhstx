@@ -2,6 +2,7 @@
 
 #include <string.h>
 
+#include "dvi.hpp"
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
 
