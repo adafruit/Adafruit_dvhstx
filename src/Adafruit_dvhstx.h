@@ -280,8 +280,8 @@ public:
   */
   /**************************************************************************/
   DVHSTXText(DVHSTXPinout pinout)
-      : GFXcanvas16(91, 30, false),
-        pinout(pinout), res{}, attr{TextColor::TEXT_WHITE} {}
+      : GFXcanvas16(91, 30, false), pinout(pinout), res{},
+        attr{TextColor::TEXT_WHITE} {}
   ~DVHSTXText() { end(); }
 
   /**************************************************************************/
