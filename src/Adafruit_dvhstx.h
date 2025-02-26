@@ -42,6 +42,13 @@ using pimoroni::DVHSTXPinout;
 #if defined(PIN_CKP)
 #define DVHSTX_PINOUT_DEFAULT                                                  \
   { PIN_CKP, PIN_D0P, PIN_D1P, PIN_D2P }
+#else
+#if !defined(DVHSTX_NO_DEFAULT_PINOUT_WARNING)
+#pragma GCC warning                                                            \
+    "DVHSTX_PINOUT_DEFAULT is a default pinout. If you get no video display, use the correct pinout for your board."
+#endif
+#define DVHSTX_PINOUT_DEFAULT                                                  \
+  { 12, 14, 16, 18 }
 #endif
 
 int16_t dvhstx_width(DVHSTXResolution r);
@@ -171,13 +178,12 @@ public:
   /**************************************************************************/
   /*!
      @brief    Instatiate a DVHSTX 8-bit canvas context for graphics
-     @param    res   Display resolution
      @param    double_buffered Whether to allocate two buffers
   */
   /**************************************************************************/
   DVHSTXText3(DVHSTXPinout pinout)
-      : GFXcanvas16(91, 30, false),
-        pinout(pinout), res{res}, attr{TextColor::TEXT_WHITE} {}
+      : GFXcanvas16(91, 30, false), pinout(pinout), res{},
+        attr{TextColor::TEXT_WHITE} {}
   ~DVHSTXText3() { end(); }
 
   operator bool() const { return hstx.get_back_buffer<uint16_t>(); }
