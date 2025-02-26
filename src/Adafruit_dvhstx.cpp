@@ -78,12 +78,12 @@ void DVHSTX8::swap(bool copy_framebuffer) {
   }
 }
 
-void DVHSTXText3::clear() {
+void DVHSTXText::clear() {
   std::fill(getBuffer(), getBuffer() + WIDTH * HEIGHT, attr << 8);
 }
 
 // Character framebuffer is actually a small GFXcanvas16, so...
-size_t DVHSTXText3::write(uint8_t c) {
+size_t DVHSTXText::write(uint8_t c) {
   if (!*this)
     return 0;
 
