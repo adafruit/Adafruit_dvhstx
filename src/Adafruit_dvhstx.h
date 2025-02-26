@@ -9,52 +9,63 @@
 /// documentation generator, these are displayed as members of a class called
 /// "enum", but in reality they are defined as top-level enumerations.
 struct enum {
-    public:
+  public :
 #endif
 
-/// Available video resolutions
-enum DVHSTXResolution {
-  DVHSTX_RESOLUTION_320x180, ///< well supported, aspect ratio 16:9, actual resolution 1280x720@50Hz
-  DVHSTX_RESOLUTION_640x360, ///< well supported, aspect ratio 16:9, actual resolution 1280x720@50Hz
+      /// Available video resolutions
+      enum DVHSTXResolution {
+        DVHSTX_RESOLUTION_320x180, ///< well supported, aspect ratio 16:9,
+                                   ///< actual resolution 1280x720@50Hz
+        DVHSTX_RESOLUTION_640x360, ///< well supported, aspect ratio 16:9,
+                                   ///< actual resolution 1280x720@50Hz
 
-  DVHSTX_RESOLUTION_480x270, ///< sometimes supported, aspect ratio 16:9, actual resolution 960x540@60Hz
+        DVHSTX_RESOLUTION_480x270, ///< sometimes supported, aspect ratio 16:9,
+                                   ///< actual resolution 960x540@60Hz
 
-  DVHSTX_RESOLUTION_400x225, ///< sometimes supported, aspect ratio 16:9, actual resolution 800x450@60Hz
+        DVHSTX_RESOLUTION_400x225, ///< sometimes supported, aspect ratio 16:9,
+                                   ///< actual resolution 800x450@60Hz
 
-  DVHSTX_RESOLUTION_320x240, ///< well supported, aspect ratio 4:3, actual resolution 640x480@60Hz
-  DVHSTX_RESOLUTION_360x240, ///< well supported, aspect ratio 3:2, actual resolution 720x480@60Hz
-  DVHSTX_RESOLUTION_360x200, ///< well supported, aspect ratio 9:5, actual resolution 720x400@70Hz
-  DVHSTX_RESOLUTION_360x288, ///< well supported, aspect ratio 5:4, actual resolution 720x576@60Hz
-  DVHSTX_RESOLUTION_400x300, ///< well supported, aspect ratio 4:3, actual resolution 800x600@60Hz
-  DVHSTX_RESOLUTION_512x384, ///< well supported, aspect ratio 4:3, actual resolution 1024x768@60Hz
+        DVHSTX_RESOLUTION_320x240, ///< well supported, aspect ratio 4:3, actual
+                                   ///< resolution 640x480@60Hz
+        DVHSTX_RESOLUTION_360x240, ///< well supported, aspect ratio 3:2, actual
+                                   ///< resolution 720x480@60Hz
+        DVHSTX_RESOLUTION_360x200, ///< well supported, aspect ratio 9:5, actual
+                                   ///< resolution 720x400@70Hz
+        DVHSTX_RESOLUTION_360x288, ///< well supported, aspect ratio 5:4, actual
+                                   ///< resolution 720x576@60Hz
+        DVHSTX_RESOLUTION_400x300, ///< well supported, aspect ratio 4:3, actual
+                                   ///< resolution 800x600@60Hz
+        DVHSTX_RESOLUTION_512x384, ///< well supported, aspect ratio 4:3, actual
+                                   ///< resolution 1024x768@60Hz
 
-  /* sometimes supported, but pixels aren't square on a 16:9 display */
-  DVHSTX_RESOLUTION_400x240, ///< well supported, aspect ratio 5:3, actual resolution 800x480@60Hz
-};
+        /* sometimes supported, but pixels aren't square on a 16:9 display */
+        DVHSTX_RESOLUTION_400x240, ///< well supported, aspect ratio 5:3, actual
+                                   ///< resolution 800x480@60Hz
+      };
 
 #if DOXYGEN
   /// Foreground, background & attribute definitions for DVHSTXText Cells
-  enum TextColor {
-      TEXT_BLACK, ///< Black foreground color
-      TEXT_RED, ///< Red foreground color
-      TEXT_GREEN, ///< Green foreground color
-      TEXT_YELLOW, ///< Yellow foreground color
-      TEXT_BLUE, ///< Blue foreground color
+  enum TextColor{
+      TEXT_BLACK,   ///< Black foreground color
+      TEXT_RED,     ///< Red foreground color
+      TEXT_GREEN,   ///< Green foreground color
+      TEXT_YELLOW,  ///< Yellow foreground color
+      TEXT_BLUE,    ///< Blue foreground color
       TEXT_MAGENTA, ///< Magenta foreground color
-      TEXT_WHITE, ///< White foreground color
+      TEXT_WHITE,   ///< White foreground color
 
-      BG_BLACK, ///< Black background color
-      BG_RED, ///< Red background color
-      BG_GREEN, ///< Green background color
-      BG_YELLOW, ///< Yellow background color
-      BG_BLUE, ///< Blue background color
+      BG_BLACK,   ///< Black background color
+      BG_RED,     ///< Red background color
+      BG_GREEN,   ///< Green background color
+      BG_YELLOW,  ///< Yellow background color
+      BG_BLUE,    ///< Blue background color
       BG_MAGENTA, ///< Magenta background color
-      BG_CYAN, ///< Cyan background color
-      BG_WHITE, ///< White background color
+      BG_CYAN,    ///< Cyan background color
+      BG_WHITE,   ///< White background color
 
       ATTR_NORMAL_INTEN, ///< Normal intensity foreground
-      ATTR_LOW_INTEN, ///< Lower intensity foreground
-      ATTR_V_LOW_INTEN, ///< Lowest intensity foreground
+      ATTR_LOW_INTEN,    ///< Lower intensity foreground
+      ATTR_V_LOW_INTEN,  ///< Lowest intensity foreground
   };
 };
 #endif
@@ -241,19 +252,24 @@ using TextColor = pimoroni::DVHSTX::TextColour;
 
 /// A text-mode canvas displaying to a DVI monitor
 ///
-/// The text mode display is always 91x30 characters at a resolution of 1280x720 pixels.
+/// The text mode display is always 91x30 characters at a resolution of 1280x720
+/// pixels.
 class DVHSTXText : public GFXcanvas16 {
 public:
-  /// Each element of the canvas is a Cell, which comprises a character and an attribute.
+  /// Each element of the canvas is a Cell, which comprises a character and an
+  /// attribute.
   struct Cell {
-    uint16_t value; ///< A value where the low 8 bits are the character and the high 8 bits are the attribute
-  /**************************************************************************/
-  /*!
-     @brief    Create a cell object from an ASCII character and an attribute
-     @param    c ASCII character value. Glyphs from 32 to 126 inclusive are available
-     @param    attr Attribute value. Can be the logical OR of a text color, a background color, and an intensity flag
-  */
-  /**************************************************************************/
+    uint16_t value; ///< A value where the low 8 bits are the character and the
+                    ///< high 8 bits are the attribute
+    /**************************************************************************/
+    /*!
+       @brief    Create a cell object from an ASCII character and an attribute
+       @param    c ASCII character value. Glyphs from 32 to 126 inclusive are
+       available
+       @param    attr Attribute value. Can be the logical OR of a text color, a
+       background color, and an intensity flag
+    */
+    /**************************************************************************/
     Cell(uint8_t c, uint8_t attr = TextColor::TEXT_WHITE)
         : value(c | (attr << 8)) {}
   };
@@ -264,8 +280,8 @@ public:
   */
   /**************************************************************************/
   DVHSTXText(DVHSTXPinout pinout)
-      : GFXcanvas16(91, 30, false), pinout(pinout), res{},
-        attr{TextColor::TEXT_WHITE} {}
+      : GFXcanvas16(91, 30, false),
+        pinout(pinout), res{}, attr{TextColor::TEXT_WHITE} {}
   ~DVHSTXText() { end(); }
 
   /**************************************************************************/
@@ -299,7 +315,8 @@ public:
 
   /**************************************************************************/
   /*!
-     @brief    Clear the display. All cells are set to character 32 (space) with the current color
+     @brief    Clear the display. All cells are set to character 32 (space) with
+     the current color
   */
   /**************************************************************************/
   void clear();
@@ -307,7 +324,8 @@ public:
   /**************************************************************************/
   /*!
      @brief    Set the color used by write()
-     @param    a Attribute value. Can be the logical OR of a text color, a background color, and an intensity flag
+     @param    a Attribute value. Can be the logical OR of a text color, a
+     background color, and an intensity flag
   */
   /**************************************************************************/
   void setColor(uint8_t a) { attr = a; }
@@ -381,8 +399,8 @@ public:
      Text is written with the current attribute, and the screen automatically
      wraps and scrolls when needed.
 
-     This function fails (returns 0) if the display was not successfully started with
-     begin().
+     This function fails (returns 0) if the display was not successfully started
+     with begin().
 
      @return 1 if the character is written, 0 if it was not
   */
