@@ -319,16 +319,16 @@ void __scratch_x("display") DVHSTX::text_dma_handler() {
                 bg_xor = bg * 0x3030303;
 
                 tmp_h = colour * ((bits >> 6) & 0x3030303) ^ bg_xor;
-                *dst_ptr++ = tmp_l & 0xffff | (tmp_h << 16);
+                *dst_ptr++ = (tmp_l & 0xffff) | (tmp_h << 16);
                 tmp_l = tmp_h >> 16;
                 tmp_h = colour * ((bits >> 4) & 0x3030303) ^ bg_xor;
-                *dst_ptr++ = tmp_l & 0xffff | (tmp_h << 16);
+                *dst_ptr++ = (tmp_l & 0xffff) | (tmp_h << 16);
                 tmp_l = tmp_h >> 16;
                 tmp_h = colour * ((bits >> 2) & 0x3030303) ^ bg_xor;
-                *dst_ptr++ = tmp_l & 0xffff | (tmp_h << 16);
+                *dst_ptr++ = (tmp_l & 0xffff) | (tmp_h << 16);
                 tmp_l = tmp_h >> 16;
                 tmp_h = colour * ((bits >> 0) & 0x3030303) ^ bg_xor;
-                *dst_ptr++ = tmp_l & 0xffff | (tmp_h << 16);
+                *dst_ptr++ = (tmp_l & 0xffff) | (tmp_h << 16);
             }
             if (y / 24 == cursor_y) {
                 uint8_t* dst_ptr = (uint8_t*)&line_buffers[ch_num * line_buf_total_len + count_of(vactive_text_line_header)] + 14 * cursor_x;
